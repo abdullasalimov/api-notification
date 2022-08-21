@@ -1,5 +1,6 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
+from api import views
 
 from api.views import ContactViewSet, MailingViewSet, MessageViewSet
 
@@ -13,5 +14,7 @@ router_v1.register('messages', MessageViewSet)
 urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
-    path('', include(router_v1.urls))
+    path('', include(router_v1.urls)),
+    path('', views.APIRootView.as_view(), name='root'),
+    # path('', include(('router_v1.urls', 'api'), namespace='api')),
 ]
