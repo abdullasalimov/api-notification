@@ -1,5 +1,7 @@
 import os
 from datetime import timedelta
+import django_heroku
+import dj_database_url
 
 from dotenv import load_dotenv
 
@@ -11,7 +13,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='ty3xz#ddwp%@z7if2(53eh%yuu#ude&%u=
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
@@ -125,3 +127,5 @@ SIMPLE_JWT = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+
+django_heroku.settings(locals())
